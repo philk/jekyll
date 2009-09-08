@@ -20,7 +20,7 @@ module Jekyll
       name =~ MATCHER
     end
 
-    attr_accessor :site, :date, :slug, :ext, :topics, :tags, :published, :data, :content, :output
+    attr_accessor :site, :date, :slug, :ext, :topics, :tags, :published, :data, :content, :output, :comments
     attr_writer :categories
     
     def categories
@@ -33,6 +33,7 @@ module Jekyll
     #   +name+ is the String filename of the post file
     #   +categories+ is an Array of Strings for the categories for this post
     #   +tags+ is an Array of Strings for the tags for this post
+    #   +comments+ is a boolean value for enabling/disabling comments per-post
     #
     # Returns <Post>
     def initialize(site, source, dir, name)
@@ -72,6 +73,7 @@ module Jekyll
       end
 
       self.tags = self.data['tags'] || []
+      self.comments = self.data['comments'] || true
     end
 
     # Spaceship is based on Post#date
@@ -275,7 +277,9 @@ module Jekyll
         "tags" => self.tags,
         "next" => self.next,
         "previous" => self.previous,
-        "content" => self.content }.deep_merge(self.data)
+        "content" => self.content,
+        "comments" => self.comments
+          }.deep_merge(self.data)
     end
 
     def inspect
