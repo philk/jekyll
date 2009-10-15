@@ -1,5 +1,7 @@
 Only thing changed is the repo is the ablity to turn on or off comments in the YAML header...that's it!  Otherwise it's exactly like henrik's awesome haml/sass version of Jekyll.
 
+Oh, I also updated syntax coloring to work correctly in Ruby 1.9 thanks to "assaf":http://github.com/mojombo/jekyll/issuesearch?state=open&q=1.9#issue/65
+
 h1. Jekyll
 
 By Tom Preston-Werner, Nick Quaranto, and many awesome contributors!
